@@ -1,6 +1,6 @@
 .search-box {
     display: flex;
-    background-color: rgb(32, 61, 130);
+    background-color: rgb(64, 96, 171);
     justify-content: center;
     align-items: center;
     position: relative;
@@ -99,7 +99,7 @@
     line-height: 1.875;
     letter-spacing: 0.06em;
     color: white;
-    background-color: rgb(32, 61, 130);
+    background-color: rgb(64, 96, 171);
     border: none;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     border-radius: 6px;
@@ -115,7 +115,7 @@
     height: 40px;
     margin-right: 10px;
     margin-bottom: 10px;
-    background-color: rgb(32, 61, 130);
+    background-color: rgb(64, 96, 171);
     border: none;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     border-radius: 50px;

@@ -6,7 +6,7 @@ import Notiflix from 'notiflix';
 import axios from 'axios';
 
 const searchBox = document.querySelector('.search-box');
-const searchQuery = document.querySelector('.search-input');
+const searchInput = document.querySelector('.search-input');
 const upBtn = document.querySelector('.up-btn');
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
@@ -15,7 +15,7 @@ const loadBtn = document.querySelector('.load-more');
 const lightbox = () => new SimpleLightbox('.gallery a', {});
 let perPage = 40;
 let page = 0;
-let name = searchQuery.value;
+let name = searchInput;
 
 loadBtn.style.display = 'none';
 upBtn.style.display = 'none';
@@ -37,7 +37,7 @@ async function eventHandler(ev) {
   clear(gallery);
   loadBtn.style.display = 'none';
   page = 1;
-  name = searchQuery.value;
+  name = searchInput.value;
   console.log(name);
   fetchImages(name, page)
     .then(name => {
@@ -51,8 +51,6 @@ async function eventHandler(ev) {
         renderGallery(name);
         console.log(`Current page: ${page}`);
         lightbox();
-        //const lightbox = new SimpleLightbox('.gallery a', {});
-        //smooth scrool to up
         upBtn.style.display = 'block';
         upBtn.addEventListener('click', () => {
           searchBox.scrollIntoView({
@@ -71,7 +69,7 @@ async function eventHandler(ev) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.',
         );
-        clear(gallery); //reset view in case of failure
+        clear(gallery); 
       }
     })
     .catch(error => console.log(error));
@@ -107,7 +105,7 @@ function renderGallery(name) {
 loadBtn.addEventListener(
   'click',
   () => {
-    name = searchQuery.value;
+    name = searchInput.value;
     console.log('load more images');
     page += 1;
     fetchImages(name, page).then(name => {
@@ -122,7 +120,7 @@ loadBtn.addEventListener(
         top: cardHeight * 2,
         behavior: 'smooth',
       });
-      //===
+    
       lightbox().refresh();
       console.log(`Current page: ${page}`);
 
@@ -132,7 +130,6 @@ loadBtn.addEventListener(
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
       }
     });
-    //console.log("Load more button clicked");
   },
   true,
 );
